@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+  <body>
+    Cofee ($5)  <button onclick="addCofee()">Add +1</button><br><br>
+    Bagels ($3)  <button onclick="addBagels()">Add +1</button><br><br>
+    soup ($9)  <button onclick="addSoup()">Add +1</button><br><br>
+    <button onclick="placeOrder()">Place Order</button>
+
+    <script type='text/javascript'>
+      let price = 0;
+      let cofee = 0;
+      let bagels = 0;
+      let soup = 0;
+      function addCofee(){
+        cofee++;
+        price += 500;
+      }
+      function addBagels(){
+        bagels++;
+        price += 300;
+      }
+      function addSoup(){
+        soup++;
+        price += 900;
+      }
+      function placeOrder(){
+        price = (price + (price*0.10)) / 100;
+        console.log(`With tax = ${price}`);
+        showBill();
+      }
+
+
+      function showBill(){
+       console.log(`TOTAL BILL`);
+       console.log(`Cofee : Number of Items ${cofee} : $${cofee*5} `);
+       console.log(`Bagels : Number of Items ${bagels} : $${bagels*3}`);
+       console.log(`Soup : Number of Items ${soup} : $${soup*9} `);
+       console.log(` TOTAL TAX 10%`);
+       console.log(`TOTAL BILL \ PAYABLE AMOUNT : $${price}`);
+
+      }
+
+
+    </script>
+
+  </body>
+</html

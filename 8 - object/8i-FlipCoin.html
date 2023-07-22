@@ -1,0 +1,57 @@
+<html>
+
+  <body>
+
+    <button onclick="check('head')">Head</button>
+    <button onclick="check('tail')">Tails</button><br>
+    <button onclick="alert(`Score\nWin : ${result.win}\nLos : ${result.los}`);
+    ">show result</button>
+    <button onclick="result.win = 0;
+                      result.los = 0;
+                      localStorage.removeItem('score');
+                      alert('Score Reset')">Reset Score</button>
+
+    <script>
+      let result =JSON.parse(localStorage.getItem('score')) || {
+        win : 0,
+        los : 0
+      };
+
+
+     function check(Value){
+      let computerMove = getComputerMove();
+
+      if(Value === 'head'){
+        if(computerMove === 'head'){
+          result.win += 1;
+          
+        }else{
+          result.los += 1;
+        }
+        alert(`Your Move ${Value} , Comp Move ${computerMove} \nWin : ${result.win} Los : ${result.los}`);
+      }
+
+      else if(Value === 'tail'){
+        if(computerMove === 'tail'){
+          result.win += 1;
+        }else{
+          result.los += 1;
+        }
+        alert(`Your Move ${Value} , Comp Move ${computerMove} \nWin : ${result.win} Los : ${result.los}`);
+      }
+
+      localStorage.setItem('score' , JSON.stringify(result));
+
+     }
+
+     function getComputerMove(){
+      let move = Math.random();
+      if( move < 1/2){
+        return 'head';
+      }
+      return 'tail';
+     }
+
+    </script>
+  </body>
+</html>
